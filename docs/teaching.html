@@ -13,6 +13,33 @@
         body {
             background-color: #F0FFFF;
         }
+        
+        /* Slideshow styles */
+        .slideshow-container {
+            max-width: 800px;
+            position: relative;
+            margin: auto;
+        }
+        
+        .slide {
+            display: none;
+            width: 100%;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
     </style>
 </head>
 <body class="text-gray-800 min-h-screen">
@@ -24,7 +51,6 @@
             <a href="teaching.html" class="text-gray-800 hover:text-gray-600 font-medium">Teaching</a>
         </div>
     </nav>
-
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-12">
         <h1 class="text-4xl mb-8">Teaching</h1>
@@ -33,37 +59,83 @@
         <section class="mb-12">
             <h2 class="text-2xl mb-6">Awards</h2>
             <div class="space-y-4">
-                <p>Outstanding Graduate Instructor of the Year, Department of Economics, Virginia Tech, 2024 </p>
+                <p>Outstanding Graduate Instructor of the Year, Department of Economics, Virginia Tech, 2024</p>
             </div>
         </section>
-
+        
         <!-- Teaching Experiences -->
         <section class="mb-12">
             <h2 class="text-2xl mb-6">Teaching Experiences</h2>
             <div class="space-y-4">
-                <p> - Intermediate Microeconomics (in-person), Department of Economics, Virginia Tech, Fall 2024 <p>
-              <p>  - Principal Microeconomics (online), Department of Economics, Virginia Tech, Summer 2024 <p>
-              <p>  - Intermediate Microeconomics (in-person), Department of Economics, Virginia Tech, Fall 2023 <p>
-               <p> - Intermediate Microeconomics (online), Department of Economics, Virginia Tech, Summer 2023 </p>
+                <p>- Intermediate Microeconomics (in-person), Department of Economics, Virginia Tech, Fall 2024</p>
+                <p>- Principal Microeconomics (online), Department of Economics, Virginia Tech, Summer 2024</p>
+                <p>- Intermediate Microeconomics (in-person), Department of Economics, Virginia Tech, Fall 2023</p>
+                <p>- Intermediate Microeconomics (online), Department of Economics, Virginia Tech, Summer 2023</p>
             </div>
         </section>
-
-
+        
         <!-- Teaching Assistance Experience -->
         <section class="mb-12">
             <h2 class="text-2xl mb-6">Teaching Assistance Experience</h2>
             <div class="space-y-4">
-                <p>  - Econometrics Methods & Introduction of Forecasting (Spring 2024, Spring 2022 (Virginia Tech)) <p>
- <p> - Principles of Microeconomics (Spring 2023 (Virginia Tech)) <p>
-<p> - Development Econ & Middle East Econ (Fall 2021, 2022, Spring 2021 (Virginia Tech)) <p>
- <p> - Data Science for Quantitative Finance (Spring 2022 (Virginia Tech)) <p>
- <p> - Microeconomics Theory (Fall 2019, 2015 (Sharif University of Technology)) <p>
- <p> - Applied Econometrics (Spring 2016 (Sharif University of Technology)) <p>
- <p> - Financial Econometrics (Spring 2015 (Sharif University of Technology)) </p>
+                <p>- Econometrics Methods & Introduction of Forecasting (Spring 2024, Spring 2022 (Virginia Tech))</p>
+                <p>- Principles of Microeconomics (Spring 2023 (Virginia Tech))</p>
+                <p>- Development Econ & Middle East Econ (Fall 2021, 2022, Spring 2021 (Virginia Tech))</p>
+                <p>- Data Science for Quantitative Finance (Spring 2022 (Virginia Tech))</p>
+                <p>- Microeconomics Theory (Fall 2019, 2015 (Sharif University of Technology))</p>
+                <p>- Applied Econometrics (Spring 2016 (Sharif University of Technology))</p>
+                <p>- Financial Econometrics (Spring 2015 (Sharif University of Technology))</p>
             </div>
         </section>
         
-
+        <!-- Teaching Evaluations -->
+        <section class="mb-12">
+            <h2 class="text-2xl mb-6">Teaching Evaluations</h2>
+            <div class="slideshow-container mb-4">
+                <!-- Replace these with your actual evaluation photos -->
+                <div class="slide fade">
+                    <img src="images/evaluation1.jpg" alt="Teaching Evaluation 1" class="w-full">
+                </div>
+                <div class="slide fade">
+                    <img src="images/evaluation2.jpg" alt="Teaching Evaluation 2" class="w-full">
+                </div>
+                <div class="slide fade">
+                    <img src="images/evaluation3.jpg" alt="Teaching Evaluation 3" class="w-full">
+                </div>
+                <div class="slide fade">
+                    <img src="images/evaluation4.jpg" alt="Teaching Evaluation 4" class="w-full">
+                </div>
+            </div>
+            <p class="text-center text-sm text-gray-600">Student evaluation highlights rotate every 5 seconds</p>
+        </section>
     </main>
+
+    <!-- JavaScript for slideshow -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let slideIndex = 0;
+            const slides = document.querySelectorAll('.slide');
+            
+            // Set the first slide as active initially
+            if (slides.length > 0) {
+                slides[0].classList.add('active');
+            }
+            
+            // Function to show the next slide
+            function showNextSlide() {
+                // Hide current slide
+                slides[slideIndex].classList.remove('active');
+                
+                // Move to next slide (loop back to start if at the end)
+                slideIndex = (slideIndex + 1) % slides.length;
+                
+                // Show the new slide
+                slides[slideIndex].classList.add('active');
+            }
+            
+            // Start the slideshow, changing every 5 seconds
+            setInterval(showNextSlide, 5000);
+        });
+    </script>
 </body>
 </html>
