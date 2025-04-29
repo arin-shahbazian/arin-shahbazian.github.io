@@ -29,6 +29,24 @@
         .slide.active {
             display: block;
         }
+
+        /* Add these styles to your existing <style> section */
+.slide img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    max-height: 600px; /* You can adjust this value */
+    object-fit: contain;
+}
+
+/* Optional: Add a background to make images with transparency more visible */
+.slide {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
         
         /* Fading animation */
         .fade {
