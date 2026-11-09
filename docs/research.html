@@ -2,103 +2,312 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Personal academic website of Arin Shahbazian, featuring research work and teaching experience">
-    <meta name="keywords" content="Arin Shahbazian, research, academic, teaching">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research | Arin Shahbazian</title>
+    <meta name="description" content="Research by Arin Shahbazian: financial incentives and weight control, cancer mortality and machine learning, breast cancer treatment delays and costs, and health policy.">
     <meta name="author" content="Arin Shahbazian">
     <meta name="robots" content="index, follow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research - Arin Shahbazian</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #F0FFFF;
-        }
-        
-        /* Abstract styling */
-        details > summary {
-            list-style: none;
-        }
-        
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
+        body { background-color: #F0FFFF; }
+
+        /* Abstract toggle: shows "Show abstract" when closed and "Hide abstract" when open */
+        details > summary { list-style: none; cursor: pointer; }
+        details > summary::-webkit-details-marker { display: none; }
+        details .hide-label { display: none; }
+        details[open] .show-label { display: none; }
+        details[open] .hide-label { display: inline; }
+
+        .paper { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.5rem; }
+        .status { display: inline-block; border-radius: 9999px; padding: 0.15rem 0.7rem; font-size: 0.8rem; font-weight: 600; margin: 0 0.4rem 0.5rem 0; }
+        .s-published { background: #dcfce7; color: #166534; }
+        .s-review    { background: #fef9c3; color: #854d0e; }
+        .s-wp        { background: #dbeafe; color: #1e3a8a; }
+        .s-progress  { background: #f3f4f6; color: #374151; }
+        .s-jmp       { background: #1e3a8a; color: #ffffff; }
+        .link { color: #1e40af; text-decoration: underline; }
+        .link:hover { color: #1e3a8a; }
     </style>
 </head>
 <body class="text-gray-800 min-h-screen">
-    <!-- Navigation - Right aligned -->
-    <nav class="container mx-auto px-4 py-6">
-        <div class="flex justify-end space-x-8">
-            <a href="index.html" class="text-gray-800 hover:text-gray-600 font-medium">Home</a>
-            <a href="research.html" class="text-gray-800 hover:text-gray-600 font-medium">Research</a>
-            <a href="teaching.html" class="text-gray-800 hover:text-gray-600 font-medium">Teaching</a>
-            <a href="conferences.html" class="text-gray-800 hover:text-gray-600 font-medium">Conference Presentations</a>
+
+    <!-- Navigation: wraps on small screens instead of running off the edge -->
+    <nav class="container mx-auto px-4 py-5">
+        <div class="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2">
+            <a href="index.html" class="text-gray-800 hover:text-blue-800 font-medium">Home</a>
+            <a href="research.html" class="text-blue-900 font-semibold">Research</a>
+            <a href="teaching.html" class="text-gray-800 hover:text-blue-800 font-medium">Teaching</a>
+            <a href="conferences.html" class="text-gray-800 hover:text-blue-800 font-medium">Conference Presentations</a>
         </div>
     </nav>
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-12">
-        <h1 class="text-4xl mb-8">Research</h1>
 
-        <!-- Job Market Paper -->
-        <section class="mb-12">
-            <h2 class="text-2xl mb-6">Job Market Paper</h2>
-            <div class="bg-white bg-opacity-70 p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-semibold mb-3">Time to Weight Loss and Subsequent Weight Maintenance: A Survival Analysis</h3>
-                <p class="text-sm text-gray-600 mb-3">[AI-Generated <a href="https://notebooklm.google.com/notebook/625fc038-3226-491c-91d1-1939bf7d83f7/audio" class="text-blue-600 hover:text-blue-800 underline">Podcast</a> by NotebookLM]</p>
-                
-                <details class="group">
-                    <summary class="cursor-pointer text-blue-600 hover:text-blue-800 font-medium">
-                        <span class="group-open:hidden">Show Abstract</span>
-                        <span class="hidden group-open:inline">Hide Abstract</span>
+    <main class="container mx-auto px-4 pt-6 pb-16 max-w-4xl">
+        <h1 class="text-4xl font-semibold mb-3">Research</h1>
+        <p class="text-lg text-gray-700 mb-10 leading-relaxed">
+            My research uses causal inference, survival analysis, and machine learning to study health behavior,
+            cancer outcomes and costs, and health policy. My dissertation uses data from an 18-month randomized
+            trial to study how financial incentives shape weight loss and long-term weight maintenance.
+        </p>
+
+        <!-- ===================== JOB MARKET PAPER ===================== -->
+        <section class="mb-14" id="jmp">
+            <h2 class="text-2xl font-semibold mb-5">Job Market Paper</h2>
+            <article class="paper shadow-md">
+                <span class="status s-jmp">Job Market Paper</span>
+                <h3 class="text-xl font-semibold mb-1">Time to Weight Loss and Subsequent Weight Maintenance: A Survival Analysis</h3>
+                <!-- Add co-authors here, for example: <p class="text-gray-600 mb-3">with Name, Name, and Name</p> -->
+
+                <p class="mt-3 mb-4 leading-relaxed">
+                    <strong>In brief:</strong> In an 18-month randomized trial, financial incentives raised the rate of reaching 5% weight loss
+                    by about 37% at any given time, with larger gains for people with higher starting BMI. People who became fast
+                    weight losers only because of the incentives kept the weight off longer.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4 mb-2">
+                    <!-- Upload the paper and uncomment this line:
+                    <a href="assets/Shahbazian_JMP.pdf" class="inline-block bg-blue-900 hover:bg-blue-800 text-white font-medium px-4 py-2 rounded-lg">Read the paper (PDF)</a>
+                    -->
+                    <details class="w-full">
+                        <summary class="text-blue-800 hover:text-blue-900 font-medium">
+                            <span class="show-label">Show abstract</span><span class="hide-label">Hide abstract</span>
+                        </summary>
+                        <div class="mt-4 text-gray-700 leading-relaxed space-y-4">
+                            <p>
+                                This study explores the timing of weight loss using time-to-event (survival) analysis and data from a randomized
+                                controlled trial (RCT) of a weight control program. The trial includes 418 participants (206 in the treatment group
+                                and 212 in the control group) across two clinical sites (South Carolina and Vermont) and has two main phases: an
+                                initial weight loss phase (months 1 to 6) and a weight maintenance phase (months 7 to 18). Participants randomized
+                                into the treatment group received financial incentives based on their behaviors and outcomes during the study.
+                            </p>
+                            <p>
+                                For the weight loss phase, we investigate whether, and by how much, financial incentives reduce the time needed to
+                                achieve weight loss (a 5% weight reduction), and which participants benefit most from the incentives. For the weight
+                                maintenance phase, we examine whether participants who lost weight more quickly achieved better long-term outcomes.
+                                Our analytical framework combines several complementary causal inference approaches to address identification
+                                challenges. We use Cox models to estimate average treatment effects, causal survival forests to identify
+                                individual-level treatment effects, and principal stratification to estimate the effect of the time to weight loss
+                                on the duration of weight maintenance.
+                            </p>
+                            <p>
+                                Our findings show that financial incentives increase the rate of achieving weight loss by approximately 37% at any
+                                given time, with substantial differences in treatment effects across participants. Participants with higher
+                                baseline BMI show systematically larger benefits from financial incentives. Our weight maintenance analysis shows
+                                that participants who become &ldquo;fast weight losers&rdquo; only under treatment conditions experience significantly
+                                longer maintenance benefits.
+                            </p>
+                            <p>
+                                These findings offer practical recommendations for improving weight control programs. Health care systems should
+                                prioritize individuals with higher baseline BMI when offering financial incentives and design comprehensive
+                                interventions that include financial incentives.
+                            </p>
+                        </div>
+                    </details>
+                </div>
+            </article>
+        </section>
+
+        <!-- ===================== PUBLICATIONS ===================== -->
+        <section class="mb-14" id="publications">
+            <h2 class="text-2xl font-semibold mb-5">Peer-Reviewed Publications</h2>
+            <article class="paper">
+                <span class="status s-published">Published</span>
+                <h3 class="text-lg font-semibold mb-1">An Exploratory Analysis of Patterns of Weight Change in a Post-Cessation Weight Management Trial</h3>
+                <p class="text-gray-600 mb-3"><em>Nicotine &amp; Tobacco Research</em>, 2025.
+                    <a href="https://academic.oup.com/ntr/advance-article-abstract/doi/10.1093/ntr/ntaf108/8140498" class="link">Journal page</a>
+                    &middot; [AI-Generated <a href="https://notebooklm.google.com/notebook/ce71c2e4-cdfe-4768-822b-5559571b3c71/audio" class="link">Podcast</a> by NotebookLM]
+                </p>
+                <details>
+                    <summary class="text-blue-800 hover:text-blue-900 font-medium">
+                        <span class="show-label">Show abstract</span><span class="hide-label">Hide abstract</span>
                     </summary>
-                    <div class="mt-4 text-gray-700 leading-relaxed">
-                        <p class="mb-4">This study explores the temporal aspects of the weight loss process within the framework of time-to-event analysis (Survival analysis) using data from a Randomized Controlled Trial (RCT) in a weight control program. The experiment includes 418 participants (206 in the treated group and 212 in the control group) across two clinical sites (South Carolina and Vermont) and comprises two main phases: the initial weight loss phase (months 1-6) and the subsequent weight maintenance phase (months 7-18). Participants randomized into the treated group receive financial incentives based on their behaviors and outcomes during the study.</p>
-                        
-                        <p class="mb-4">For the weight loss phase, we investigate whether and how much financial incentives are effective in reducing the duration to achieve weight loss and which participants benefit most from incentive structures. For the weight maintenance phase, we explore whether faster weight losers maintain better long-term outcomes and what long-term weight outcomes would look like under alternative intervention designs. Our analytical framework combines multiple complementary causal inference approaches to address identification challenges. We employ Cox models to estimate average treatment effects, causal survival forests to identify individual-level treatment effects, principal stratification analysis to estimate the effect of weight loss achievement time on weight maintenance duration, and sequential G-estimation to simulate counterfactual policy scenarios to measure the effects of alternative incentive timing strategies.</p>
-                        
-                        <p class="mb-4">Our findings reveal that financial incentives increase the probability of achieving weight loss by approximately 37% at any given time, with substantial treatment effect heterogeneity across participants. Participants with higher baseline BMI demonstrate systematically larger benefits from financial incentives. Our weight maintenance analysis reveals that participants who become "fast weight losers" only under treatment conditions experience significantly longer maintenance benefits. Finally, our counterfactual analysis reveals that behavioral incentives combined with outcome incentives provide significantly higher success rates for weight maintenance than outcome incentives alone.</p>
-                        
-                        <p>Our findings offer actionable policy recommendations for optimizing weight control interventions. Healthcare systems should prioritize targeting individuals with higher baseline BMI with financial incentives and develop comprehensive intervention designs combining behavioral incentives with outcome incentives for significantly higher success rates than outcome incentives alone.</p>
-                    </div>
+                    <p class="mt-4 text-gray-700 leading-relaxed">
+                        Using daily e-scale data from the &ldquo;Fit &amp; Quit&rdquo; post-cessation weight management trial (n = 132), this study
+                        uses mixed-effects and polynomial models to describe how weight changes after people quit smoking. Weight gain begins
+                        immediately after quitting, peaks around day 21, and levels off by roughly day 70, with no differences by intervention
+                        condition or gender. The findings suggest that post-cessation weight management programs should focus on the first
+                        month after quitting.
+                    </p>
                 </details>
+            </article>
+        </section>
+
+        <!-- ===================== UNDER REVIEW ===================== -->
+        <section class="mb-14" id="under-review">
+            <h2 class="text-2xl font-semibold mb-5">Under Review</h2>
+            <article class="paper">
+                <span class="status s-review">Under review, <em>Cancer Medicine</em></span>
+                <h3 class="text-lg font-semibold mb-1">Machine Learning-Driven Insights into the Structural and Socioeconomic Predictors of Top Five Cancer Mortality Rates in the U.S.</h3>
+                <p class="text-gray-600 mb-3">Presented at the American Public Health Association (APHA) Annual Meeting, November 2025</p>
+                <details>
+                    <summary class="text-blue-800 hover:text-blue-900 font-medium">
+                        <span class="show-label">Show abstract</span><span class="hide-label">Hide abstract</span>
+                    </summary>
+                    <p class="mt-4 text-gray-700 leading-relaxed">
+                        This study uses 23 county-level structural and socioeconomic variables from 2018 to 2022 to compare machine learning
+                        models (Random Forest and Gradient Boosting) with traditional regression models (Linear, Ridge, and LASSO) in predicting
+                        mortality for all cancers combined and for the top five cancer sites. The machine learning models consistently
+                        outperform the linear models, and the main predictors differ meaningfully by cancer type. Disability and poverty
+                        indicators drive mortality from screenable cancers, while housing and internet access drive pancreatic cancer
+                        mortality. These results point to the need for public health strategies tailored to each cancer site.
+                    </p>
+                </details>
+            </article>
+        </section>
+
+        <!-- ===================== WORKING PAPERS ===================== -->
+        <section class="mb-14" id="working-papers">
+            <h2 class="text-2xl font-semibold mb-5">Working Papers</h2>
+            <div class="space-y-5">
+
+                <article class="paper">
+                    <span class="status s-wp">Working paper</span><span class="status s-progress">Dissertation chapter</span>
+                    <h3 class="text-lg font-semibold mb-1">The Role of Motivations in Weight Control Programs: An RCT Study</h3>
+                    <p class="text-gray-600 mb-3">Presented at the 14th Annual Conference of the American Society of Health Economists (ASHEcon), June 2025
+                        &middot; [AI-Generated <a href="https://notebooklm.google.com/notebook/2fc0e228-8381-49c1-8f47-0cc312718674/audio" class="link">Podcast</a> by NotebookLM]
+                    </p>
+                    <details>
+                        <summary class="text-blue-800 hover:text-blue-900 font-medium">
+                            <span class="show-label">Show abstract</span><span class="hide-label">Hide abstract</span>
+                        </summary>
+                        <div class="mt-4 text-gray-700 leading-relaxed space-y-4">
+                            <p>
+                                This study analyzes data from a randomized controlled trial of an 18-month behavioral weight control program to
+                                understand how financial incentives influence long-term weight outcomes through motivation. Participants (N = 418)
+                                were randomized into a control group (n = 212) and a treatment group (n = 206) taking part in an online program, with
+                                the treatment group receiving additional financial incentives for weight control behaviors and targets. Participants
+                                were classified in two phases: whether they achieved 5% weight loss at month 6 (weight loss vs. no weight loss), and
+                                whether they kept their weight below both baseline and month 6 levels at month 18 (weight maintenance vs. no weight
+                                maintenance).
+                            </p>
+                            <p>
+                                Using the Treatment Self-Regulation Questionnaire, administered at baseline and at months 2, 6, 12, and 18, we apply
+                                sequential mediation analysis to trace how the intervention&rsquo;s effects pass through early changes in motivation,
+                                weight loss success, later changes in motivation, and final weight maintenance. Financial incentives significantly
+                                reduced the early decline in intrinsic motivation, and each one-unit improvement in early motivation increased the
+                                probability of weight loss success by 9.0 percentage points. In turn, weight loss success strengthened later intrinsic
+                                motivation, which increased the probability of successful weight maintenance by 15.16 percentage points. We also find
+                                no evidence of crowding-out effects: financial incentives neither undermined intrinsic motivation nor caused greater
+                                weight regain among incentivized participants after the incentives ended.
+                            </p>
+                            <p>
+                                These findings show that financial incentives work through both motivational and non-motivational channels, creating
+                                a chain of psychological effects that supports lasting weight control. Programs should assess intrinsic motivation
+                                early, give extra support to people with lower intrinsic motivation, and gradually reduce external incentives while
+                                strengthening intrinsic motivation to improve long-term success.
+                            </p>
+                        </div>
+                    </details>
+                </article>
+
+                <article class="paper">
+                    <span class="status s-wp">Working paper</span><span class="status s-progress">Dissertation chapter</span>
+                    <h3 class="text-lg font-semibold mb-1">Incentive Design and Long-Term Weight Management Success: A Counterfactual Policy Analysis</h3>
+                    <details class="mt-3">
+                        <summary class="text-blue-800 hover:text-blue-900 font-medium">
+                            <span class="show-label">Show abstract</span><span class="hide-label">Hide abstract</span>
+                        </summary>
+                        <div class="mt-4 text-gray-700 leading-relaxed space-y-4">
+                            <p>
+                                Financial incentives are widely used to promote weight loss, yet little is known about how incentive design,
+                                including the type, timing, and order of rewards, shapes long-term success. We apply sequential G-estimation of
+                                structural nested mean models to data from an 18-month randomized controlled trial of an online behavioral weight
+                                control program (N = 418) to evaluate incentive regimes that the trial did not directly randomize. We compare four
+                                population-level regimes: no incentives; the trial&rsquo;s alternating schedule of behavioral-plus-outcome and
+                                outcome-only incentives; continuous outcome-only incentives; and continuous behavioral-plus-outcome incentives. We
+                                define long-term success as at least 5% weight loss from baseline sustained through 18 months.
+                            </p>
+                            <p>
+                                Regimes that include behavioral incentives outperform outcome-only designs by roughly 7 to 8 percentage points, while
+                                extending behavioral incentives continuously improves only slightly on the trial&rsquo;s alternating protocol, a gain
+                                not statistically different from zero. An exploratory adherence-weighted extension further suggests that sustained
+                                engagement during the program&rsquo;s later behavioral-incentive phase predicts success much more strongly than early
+                                engagement. This indicates that long-term success requires adherence through the later phase, not early adherence
+                                alone. Although this finding is associational, it points to engagement, and not only incentive design, as a target
+                                for future work.
+                            </p>
+                            <p>
+                                A cost-effectiveness framework that includes both incentive payments and fixed delivery costs shows that continuous
+                                behavioral incentives are the least cost-effective option on a cost-per-success basis, while continuous outcome-only
+                                incentives and the trial&rsquo;s alternating protocol are the most cost-effective of the active regimes. These findings
+                                suggest that program administrators can achieve near-optimal outcomes at lower cost by combining behavioral-plus-outcome
+                                and outcome-only incentives in the trial&rsquo;s alternating sequence, rather than extending behavioral incentives
+                                continuously. Further gains may come from strengthening engagement in the program&rsquo;s later phase rather than from
+                                more generous incentives. These results offer practical guidance for scalable, cost-effective weight management
+                                programs that complement pharmacological treatment.
+                            </p>
+                        </div>
+                    </details>
+                </article>
+
+                <article class="paper">
+                    <span class="status s-wp">Working paper</span>
+                    <h3 class="text-lg font-semibold mb-1">Impact of Treatment Delays on Healthcare Costs in Patients with Breast Cancer: A Mediation Analysis of Healthcare Utilization by Socioeconomic Status</h3>
+                    <p class="text-gray-600 mb-3">Accepted for presentation at ASHEcon 2026</p>
+                    <details>
+                        <summary class="text-blue-800 hover:text-blue-900 font-medium">
+                            <span class="show-label">Show abstract</span><span class="hide-label">Hide abstract</span>
+                        </summary>
+                        <p class="mt-4 text-gray-700 leading-relaxed">
+                            This study uses SEER-Medicare data from 2010 to 2019 on 74,173 breast cancer patients to examine how treatment delays,
+                            defined as more than two months from diagnosis to first treatment, affect health care use and costs, with results
+                            stratified by socioeconomic status (SES) using the Yost index. Mediation analysis shows that delays raise costs through
+                            greater health care use by $1,613.57 among high-SES patients and $1,891.15 among low-SES patients. Yet the total effect
+                            of delays on costs is negative, lowering overall spending by $2,192.79 and $981.59, respectively. This suggests that
+                            delays reflect missed or incomplete care and are a hidden driver of inequity and inefficiency.
+                        </p>
+                    </details>
+                </article>
+
+                <article class="paper">
+                    <span class="status s-wp">Working paper</span>
+                    <h3 class="text-lg font-semibold">Disparities in Treatment Delay and Its Trends</h3>
+                </article>
+
+                <article class="paper">
+                    <span class="status s-wp">Working paper</span>
+                    <h3 class="text-lg font-semibold mb-1">Abstention and Unconditional Cash Transfer Effects on Tobacco Consumption: Evidence from Iran&rsquo;s 2010 Energy Subsidy Reform</h3>
+                    <p class="text-gray-600">Presented at the Fourth International Conference on the Iranian Economy, 2016</p>
+                </article>
             </div>
         </section>
 
-        <!-- Works in Progress -->
-        <section class="mb-12">
-            <h2 class="text-2xl mb-6">Works in progress</h2>
-            <div class="space-y-4">
-                <p> - The Role of Motivations in Weight Outcomes: An RCT Study [AI-Generated <a href="https://notebooklm.google.com/notebook/2fc0e228-8381-49c1-8f47-0cc312718674/audio" class="text-blue-600 hover:text-blue-800 underline">Podcast</a> by NotebookLM] </p>
-                <p> - Machine Learning for Breast Cancer Stage Prediction in Claims Data: A SEER-Medicare Study </p>
-                <p> -  The Social Determinants of Health: A new approach    </p>
-            </div>
-        </section>
-        
-        <!-- Submitted Works -->
-        <section class="mb-12">
-            <h2 class="text-2xl mb-6">Peer-Reviewed Publications and Submitted Works</h2>
-            <div class="space-y-4">
-                <p> - An Exploratory Analysis of Patterns of Weight Change in a Post-Cessation Weight Management Trial (published at <a href="https://academic.oup.com/ntr/advance-article-abstract/doi/10.1093/ntr/ntaf108/8140498?redirectedFrom=fulltext" class="text-blue-600 hover:text-blue-800">"Nicotine & Tobacco Research"</a>, May 2025) [AI-Generated <a href="https://notebooklm.google.com/notebook/ce71c2e4-cdfe-4768-822b-5559571b3c71/audio" class="text-blue-600 hover:text-blue-800 underline">Podcast</a> by NotebookLM] </p>
-                 <p> -  Machine Learning-Driven Insights into the Structural and Socioeconomic Predictors of Top Five Cancer Mortality Rates in the U.S. </p>
-                <p> - Impact of Treatment Delays on Healthcare Costs in Patients with Breast Cancer: A Mediation Analysis of Healthcare Utilization by Socioeconomic Status </p>
-                <p> - Disparities in Treatment Delay and Its Trends </p>
-                <p> - Abstention and Unconditional Cash Transfer Effects on the Tobacco Consumption: Evidence from Iran's Energy Subsidy Reform 2010 (presented at Fourth International Conference on the Iranian Economy, 2016)  </p>
+        <!-- ===================== WORK IN PROGRESS ===================== -->
+        <section class="mb-14" id="in-progress">
+            <h2 class="text-2xl font-semibold mb-5">Work in Progress</h2>
+            <div class="space-y-5">
+                <article class="paper">
+                    <span class="status s-progress">In progress</span>
+                    <h3 class="text-lg font-semibold">Machine Learning for Breast Cancer Stage Prediction in Claims Data: A SEER-Medicare Study</h3>
+                </article>
+                <article class="paper">
+                    <span class="status s-progress">In progress</span>
+                    <h3 class="text-lg font-semibold">The Social Determinants of Health: A New Approach</h3>
+                </article>
             </div>
         </section>
 
-        <!-- Other Works and Published Reports -->
-        <section class="mb-12">
-            <h2 class="text-2xl mb-6">Other Works and Published Reports</h2>
-            <div class="space-y-4">
-                <p> - A Portrait of Multidimensional Poverty in Iran, November 2020. </p>
-                 <p> -  Analysis of Household  Expenditures and Income Data on 2019: Average Caloric Requirements of Iranian Households, July 2020. </p>
-                <p> - Examining executive considerations, inflationary effects and recovery consequences of gasoline price increase, November 2019. </p>
-                <p> - Alternative Support Policy for Preferential Exchange Rate, May 2019. </p>
-                <p> - Estimation of premiums' elasticities in Iran by using QUAIDS, June 2018.  </p>
-                 <p> - Estimation of the seasonal poverty line in Iran, December 2018. </p>
-                <p> - An overview of the expanded CBN method to calculate Iran's poverty line in 2016, November 2018. </p>
-                 <p> - Premiums' placement on Iranian households' budget, April 2017. </p>
-            </div>
+        <!-- ===================== POLICY REPORTS ===================== -->
+        <section id="reports">
+            <h2 class="text-2xl font-semibold mb-3">Policy Reports and Applied Work</h2>
+            <p class="text-gray-700 mb-5 leading-relaxed">
+                Before my PhD, I spent about five years doing applied policy research on poverty, household spending, insurance,
+                and energy pricing. Selected reports:
+            </p>
+            <ul class="paper list-disc pl-10 space-y-2 leading-relaxed">
+                <li>A Portrait of Multidimensional Poverty in Iran, November 2020</li>
+                <li>Analysis of Household Expenditures and Income Data on 2019: Average Caloric Requirements of Iranian Households, July 2020</li>
+                <li>Examining executive considerations, inflationary effects and recovery consequences of gasoline price increase, November 2019</li>
+                <li>Alternative Support Policy for Preferential Exchange Rate, May 2019</li>
+                <li>Estimation of premiums&rsquo; elasticities in Iran by using QUAIDS, June 2018</li>
+                <li>Estimation of the seasonal poverty line in Iran, December 2018</li>
+                <li>An overview of the expanded CBN method to calculate Iran&rsquo;s poverty line in 2016, November 2018</li>
+                <li>Premiums&rsquo; placement on Iranian households&rsquo; budget, April 2017</li>
+            </ul>
         </section>
     </main>
+
+    <footer class="border-t border-gray-200 py-6 text-center text-sm text-gray-500">
+        Arin Shahbazian &middot; Updated November 2026
+    </footer>
 </body>
 </html>
